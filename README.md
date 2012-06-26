@@ -1,5 +1,10 @@
 # AndEngine
 
+## This Version
+ * This forked version contains Box2D extention (With modifications)
+ * Changes to sprite button
+ * Changes to entity
+
 ## Building
 
  * AndEngine has to be build with ADT-17 or higher!
@@ -24,7 +29,7 @@
  * AndEngineMODPlayerExtension
  * AndEngineMultiplayerExtension
  * AndEngineMultiTouchExtension (Merged into the 'GLES2' branch.)
- * AndEnginePhysicsBox2DExtension
+ * AndEnginePhysicsBox2DExtension (Merged into this fork)
  * AndEngineRobotiumExtension
  * AndEngineScriptingExtension
  * AndEngineSVGTextureRegionExtension
