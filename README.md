@@ -13,10 +13,10 @@
 
  * GLES2: 'GLES2'
     * Active development. 
-    * Support: [> 88% of all Android devices ([Nov. 2011](http://developer.android.com/resources/dashboard/platform-versions.html))
+    * Support: [> 90.1% of all Android devices ([June 2011](http://developer.android.com/about/dashboards/index.html))
  * GLES1: 'master'
     * Not in active development.
-    * Support: > 99.1% of all Android devices ([Nov. 2011](http://developer.android.com/resources/dashboard/platform-versions.html))
+    * Support: > 99.1% of all Android devices ([Nov. 2011](http://developer.android.com/about/dashboards/index.html))
 
 ## Examples
 
