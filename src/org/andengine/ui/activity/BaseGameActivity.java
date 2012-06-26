@@ -86,6 +86,7 @@ public abstract class BaseGameActivity extends BaseActivity implements IGameInte
 
 	@Override
 	public Engine onCreateEngine(final EngineOptions pEngineOptions) {
+		
 		return new Engine(pEngineOptions);
 	}
 
@@ -457,7 +458,7 @@ public abstract class BaseGameActivity extends BaseActivity implements IGameInte
 	}
 
 	protected static LayoutParams createSurfaceViewLayoutParams() {
-		final LayoutParams layoutParams = new LayoutParams(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.FILL_PARENT);
+		final LayoutParams layoutParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
 		layoutParams.gravity = Gravity.CENTER;
 		return layoutParams;
 	}

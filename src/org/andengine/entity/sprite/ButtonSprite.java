@@ -127,6 +127,9 @@ public class ButtonSprite extends TiledSprite {
 			this.changeState(State.DISABLED);
 		} else if(pSceneTouchEvent.isActionDown()) {
 			this.changeState(State.PRESSED);
+			if(this.mOnClickListener != null) {
+				this.mOnClickListener.onDown(this);
+			}
 		} else if(pSceneTouchEvent.isActionCancel() || !this.contains(pSceneTouchEvent.getX(), pSceneTouchEvent.getY())) {
 			this.changeState(State.NORMAL);
 		} else if(pSceneTouchEvent.isActionUp() && this.mState == State.PRESSED) {
@@ -183,6 +186,8 @@ public class ButtonSprite extends TiledSprite {
 		// ===========================================================
 
 		public void onClick(final ButtonSprite pButtonSprite, final float pTouchAreaLocalX, final float pTouchAreaLocalY);
+		
+		public void onDown(final ButtonSprite pButtonSprite);
 	}
 
 	public static enum State {

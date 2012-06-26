@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="FloatMath" severity="ignore" />
+    <issue id="NewApi">
+        <ignore path="src\org\andengine\opengl\GLES20Fix.java" />
+    </issue>
+</lint>
