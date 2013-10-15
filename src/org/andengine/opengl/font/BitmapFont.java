@@ -12,7 +12,7 @@ import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureManager;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.bitmap.BitmapTexture;
-import org.andengine.opengl.texture.bitmap.BitmapTexture.BitmapTextureFormat;
+import org.andengine.opengl.texture.bitmap.BitmapTextureFormat;
 import org.andengine.util.StreamUtils;
 import org.andengine.util.TextUtils;
 import org.andengine.util.adt.io.in.AssetInputStreamOpener;
@@ -411,7 +411,7 @@ public class BitmapFont implements IFont {
 			final float u2 = (x + width) / textureWidth;
 			final float v2 = (y + height) / textureHeight;
 
-			this.mCharacterToLetterMap.put(id, new Letter((char)id, x, y, width, height, xOffset, yOffset, xAdvance, u, v, u2, v2));
+			this.mCharacterToLetterMap.put(id, new Letter(id, x, y, width, height, xOffset, yOffset, xAdvance, u, v, u2, v2));
 		}
 	}
 

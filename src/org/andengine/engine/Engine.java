@@ -29,7 +29,7 @@ import org.andengine.input.sensor.orientation.OrientationData;
 import org.andengine.input.sensor.orientation.OrientationSensorOptions;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.input.touch.controller.ITouchController;
-import org.andengine.input.touch.controller.ITouchController.ITouchEventCallback;
+import org.andengine.input.touch.controller.ITouchEventCallback;
 import org.andengine.input.touch.controller.MultiTouchController;
 import org.andengine.input.touch.controller.SingleTouchController;
 import org.andengine.opengl.font.FontFactory;
@@ -172,6 +172,9 @@ public class Engine implements SensorEventListener, OnTouchListener, ITouchEvent
 			this.mUpdateThread = new UpdateThread();
 		}
 		this.mUpdateThread.setEngine(this);
+	}
+
+	public void startUpdateThread() throws IllegalThreadStateException {
 		this.mUpdateThread.start();
 	}
 
@@ -682,7 +685,7 @@ public class Engine implements SensorEventListener, OnTouchListener, ITouchEvent
 	 */
 	public boolean enableAccelerationSensor(final Context pContext, final IAccelerationListener pAccelerationListener, final AccelerationSensorOptions pAccelerationSensorOptions) {
 		final SensorManager sensorManager = (SensorManager) pContext.getSystemService(Context.SENSOR_SERVICE);
-		if(this.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER)) {
+		if(Engine.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER)) {
 			this.mAccelerationListener = pAccelerationListener;
 
 			if(this.mAccelerationData == null) {
@@ -705,7 +708,7 @@ public class Engine implements SensorEventListener, OnTouchListener, ITouchEvent
 	 */
 	public boolean disableAccelerationSensor(final Context pContext) {
 		final SensorManager sensorManager = (SensorManager) pContext.getSystemService(Context.SENSOR_SERVICE);
-		if(this.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER)) {
+		if(Engine.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER)) {
 			this.unregisterSelfAsSensorListener(sensorManager, Sensor.TYPE_ACCELEROMETER);
 			return true;
 		} else {
@@ -725,7 +728,7 @@ public class Engine implements SensorEventListener, OnTouchListener, ITouchEvent
 	 */
 	public boolean enableOrientationSensor(final Context pContext, final IOrientationListener pOrientationListener, final OrientationSensorOptions pOrientationSensorOptions) {
 		final SensorManager sensorManager = (SensorManager) pContext.getSystemService(Context.SENSOR_SERVICE);
-		if(this.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER) && this.isSensorSupported(sensorManager, Sensor.TYPE_MAGNETIC_FIELD)) {
+		if(Engine.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER) && Engine.isSensorSupported(sensorManager, Sensor.TYPE_MAGNETIC_FIELD)) {
 			this.mOrientationListener = pOrientationListener;
 
 			if(this.mOrientationData == null) {
@@ -749,7 +752,7 @@ public class Engine implements SensorEventListener, OnTouchListener, ITouchEvent
 	 */
 	public boolean disableOrientationSensor(final Context pContext) {
 		final SensorManager sensorManager = (SensorManager) pContext.getSystemService(Context.SENSOR_SERVICE);
-		if(this.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER) && this.isSensorSupported(sensorManager, Sensor.TYPE_MAGNETIC_FIELD)) {
+		if(Engine.isSensorSupported(sensorManager, Sensor.TYPE_ACCELEROMETER) && Engine.isSensorSupported(sensorManager, Sensor.TYPE_MAGNETIC_FIELD)) {
 			this.unregisterSelfAsSensorListener(sensorManager, Sensor.TYPE_ACCELEROMETER);
 			this.unregisterSelfAsSensorListener(sensorManager, Sensor.TYPE_MAGNETIC_FIELD);
 			return true;
@@ -758,7 +761,7 @@ public class Engine implements SensorEventListener, OnTouchListener, ITouchEvent
 		}
 	}
 
-	private boolean isSensorSupported(final SensorManager pSensorManager, final int pType) {
+	private static boolean isSensorSupported(final SensorManager pSensorManager, final int pType) {
 		return pSensorManager.getSensorList(pType).size() > 0;
 	}
 

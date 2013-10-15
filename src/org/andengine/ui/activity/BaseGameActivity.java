@@ -5,7 +5,7 @@ import org.andengine.audio.music.MusicManager;
 import org.andengine.audio.sound.SoundManager;
 import org.andengine.engine.Engine;
 import org.andengine.engine.options.EngineOptions;
-import org.andengine.engine.options.EngineOptions.ScreenOrientation;
+import org.andengine.engine.options.ScreenOrientation;
 import org.andengine.engine.options.WakeLockOptions;
 import org.andengine.entity.scene.Scene;
 import org.andengine.input.sensor.acceleration.AccelerationSensorOptions;
@@ -78,6 +78,7 @@ public abstract class BaseGameActivity extends BaseActivity implements IGameInte
 		this.mGamePaused = true;
 
 		this.mEngine = this.onCreateEngine(this.onCreateEngineOptions());
+		this.mEngine.startUpdateThread();
 
 		this.applyEngineOptions();
 

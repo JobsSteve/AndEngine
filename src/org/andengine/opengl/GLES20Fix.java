@@ -23,7 +23,7 @@ public class GLES20Fix {
 	private static final boolean WORKAROUND_MISSING_GLES20_METHODS;
 
 	static {
-		boolean loadLibrarySuccess = false;
+		boolean loadLibrarySuccess;
 		try {
 			System.loadLibrary("andengine");
 			loadLibrarySuccess = true;
@@ -36,7 +36,7 @@ public class GLES20Fix {
 			if(loadLibrarySuccess) {
 				WORKAROUND_MISSING_GLES20_METHODS = true;
 			} else {
-				throw new AndEngineRuntimeException();
+				throw new AndEngineRuntimeException("Inherently incompatible device detected.");
 			}
 		} else {
 			WORKAROUND_MISSING_GLES20_METHODS = false;
