@@ -2,6 +2,7 @@
 
 ## This Version
  * This forked version contains Box2D extention (With modifications)
+ * TMX Tiled Maps (http://mapeditor.org)
  * Changes to sprite button
  * Changes to entity
 
